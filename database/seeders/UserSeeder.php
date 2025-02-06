@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
             ->has(factory: Post::factory()->count(3))
             ->create(attributes: [
                 'name' => 'Test User',
-                'mobile' => '09121111111',
+                'mobile' => '+1-111-111-111',
             ]);
 
     }

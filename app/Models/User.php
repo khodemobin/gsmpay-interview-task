@@ -2,17 +2,22 @@
 
 namespace App\Models;
 
+use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use Notifiable, HasApiTokens;
 
-    protected $guarded = ['id', 'password'];
+    /** @use HasFactory<UserFactory> */
+    use HasFactory;
+
+    protected $guarded = ['id'];
+    protected $hidden = ["password"];
 
     /**
      * @return HasMany<Post, $this>
