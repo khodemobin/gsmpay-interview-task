@@ -14,22 +14,22 @@ class AuthService
      */
     public function login(LoginRequest $request): array
     {
-        $user = User::query()->where("mobile", $request->input("mobile"))->first();
-        throw_if(!$user, ValidationException::withMessages([
-            "mobile" => __("auth.failed")
+        $user = User::query()->where('mobile', $request->input('mobile'))->first();
+        throw_if(! $user, ValidationException::withMessages([
+            'mobile' => __('auth.failed'),
         ]));
 
-        if (!Hash::check($request->input("password"), $user->password)) {
+        if (! Hash::check($request->input('password'), $user->password)) {
             throw ValidationException::withMessages([
-                "mobile" => __("auth.failed"),
+                'mobile' => __('auth.failed'),
             ]);
         }
 
-        $token = $user->createToken("login")->plainTextToken;
+        $token = $user->createToken('login')->plainTextToken;
 
         return [
-            "token" => $token,
-            "user" => $user
+            'token' => $token,
+            'user' => $user,
         ];
     }
 }

@@ -11,13 +11,14 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasApiTokens;
+    use HasApiTokens, Notifiable;
 
     /** @use HasFactory<UserFactory> */
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $hidden = ["password"];
+
+    protected $hidden = ['password'];
 
     /**
      * @return HasMany<Post, $this>

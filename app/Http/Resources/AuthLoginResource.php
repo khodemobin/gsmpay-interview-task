@@ -15,8 +15,8 @@ class AuthLoginResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            "user" => new UserResource((object)$this["user"]),
-            "access_token" => $this["token"]
+            'user' => new UserResource((object) $this['user']),
+            'access_token' => $this['token'],
         ];
     }
 }

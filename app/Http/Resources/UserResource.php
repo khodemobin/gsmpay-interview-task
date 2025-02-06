@@ -9,14 +9,12 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /** @mixin User */
 class UserResource extends JsonResource
 {
-
     public function toArray(Request $request): array
     {
         return [
-            "name" => $this->name,
-            "mobile" => $this->mobile,
-            "profile_photo" => $this->profile_photo,
+            'name' => $this->name,
+            'mobile' => $this->mobile,
+            'profile_photo' => $this->profile_photo,
         ];
     }
 }
-
