@@ -15,7 +15,7 @@ class UpdateTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->putJson('/api/user', [
+        $response = $this->actingAs($user)->putJson('/api/users', [
             "profile_photo" => UploadedFile::fake()->image('avatar.jpg')
         ]);
 
@@ -33,7 +33,7 @@ class UpdateTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->putJson('/api/user', [
+        $response = $this->actingAs($user)->putJson('/api/users', [
             "profile_photo" => UploadedFile::fake()->image('avatar.pdf')
         ]);
 
