@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use App\Services\Auth\AuthService;
+use App\Services\AuthService;
+use App\Services\UserService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,6 +16,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(AuthService::class, function () {
             return new AuthService;
         });
+
+        $this->app->singleton(UserService::class, function () {
+            return new UserService;
+        });
+
     }
 
     /**

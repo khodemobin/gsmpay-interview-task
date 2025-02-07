@@ -9,9 +9,6 @@ use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
-    /**
-     * A basic test example.
-     */
     public function test_login_success(): void
     {
         $user = User::factory()->create();

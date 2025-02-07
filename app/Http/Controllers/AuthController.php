@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Resources\AuthLoginResource;
-use App\Services\Auth\AuthService;
+use App\Services\AuthService;
 
 class AuthController extends Controller
 {
-    public function login(LoginRequest $request, AuthService $auth): AuthLoginResource
+    public function login(LoginRequest $request, AuthService $authService): AuthLoginResource
     {
-        $payload = $auth->login($request);
+        $payload = $authService->login($request);
 
         return new AuthLoginResource($payload);
     }
