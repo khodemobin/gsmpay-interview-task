@@ -14,8 +14,8 @@ use Knuckles\Scribe\Attributes\UrlParam;
 
 class PostController extends Controller
 {
-    #[QueryParam("page", "Pagination's page", required: false, example: "1")]
-    #[QueryParam("limit", "Pagination's limit.", required: false, example: "10")]
+    #[QueryParam('page', "Pagination's page", required: false, example: '1')]
+    #[QueryParam('limit', "Pagination's limit.", required: false, example: '10')]
     #[Authenticated]
     public function index(IndexRequest $request, PostService $postService): AnonymousResourceCollection
     {
@@ -24,7 +24,7 @@ class PostController extends Controller
         return PostResource::collection($posts);
     }
 
-    #[UrlParam("post", "Them post id.", required: true, example: "1")]
+    #[UrlParam('post', 'Them post id.', required: true, example: '1')]
     #[Authenticated]
     public function show(Request $request, Post $post, PostService $postService): PostResource
     {

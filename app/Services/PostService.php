@@ -21,19 +21,19 @@ class PostService
     public function incrementView(Request $request, Post $post): void
     {
         $isViewExists = PostView::query()
-            ->where("post_id", $post->id)
-            ->where("ip", $request->ip())
+            ->where('post_id', $post->id)
+            ->where('ip', $request->ip())
             ->exists();
 
         if ($isViewExists) {
             return;
         }
 
-        $post->increment("view_count");
+        $post->increment('view_count');
 
         PostView::query()->create([
-            "post_id" => $post->id,
-            "ip" => $request->ip()
+            'post_id' => $post->id,
+            'ip' => $request->ip(),
         ]);
     }
 }

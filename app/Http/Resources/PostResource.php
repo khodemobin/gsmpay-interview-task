@@ -15,7 +15,7 @@ class PostResource extends JsonResource
             'title' => $this->title,
             'body' => $this->body,
             'view_count' => $this->view_count,
-            "user" => new UserResource($this->user)
+            'user' => new UserResource($this->user),
         ];
     }
 }

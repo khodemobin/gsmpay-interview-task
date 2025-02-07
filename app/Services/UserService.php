@@ -17,7 +17,7 @@ class UserService
     {
         if ($request->hasFile('profile_photo')) {
             $path = $request->file('profile_photo')->store('profile_photo', 'public');
-            $user->profile_photo = config('app.url') . '/storage/' . $path;
+            $user->profile_photo = config('app.url').'/storage/'.$path;
         }
 
         $user->update($request->except('profile_photo'));
