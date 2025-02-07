@@ -11,13 +11,13 @@ class CustomResponse
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
      */
     public function handle(Request $request, Closure $next): Response
     {
         $response = $next($request);
 
-        if ($response instanceof Response) {
+        if ($response instanceof Response && json_validate($response)) {
             $data = $response->getData(true);
             $data['server_time'] = now()->toDateTimeString();
             $response->setData($data);
