@@ -9,6 +9,9 @@ use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\DB;
+use Knuckles\Scribe\Attributes\Authenticated;
+use Knuckles\Scribe\Attributes\BodyParam;
+use Knuckles\Scribe\Attributes\Header;
 
 class UserController extends Controller
 {
@@ -19,11 +22,15 @@ class UserController extends Controller
         return UserResource::collection($users);
     }
 
+    #[Authenticated]
     public function me(Request $request): UserResource
     {
         return new UserResource($request->user());
     }
 
+    #[BodyParam("profile_photo", "file", "User profile image.", required: false)]
+    #[Authenticated]
+    #[Header("_method","PUT")]
     public function update(UpdateRequest $request, UserService $userService): UserResource
     {
         $user = $userService->update($request, $request->user());
