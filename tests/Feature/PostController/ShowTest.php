@@ -1,6 +1,6 @@
 <?php
 
-namespace Feature\UserController;
+namespace Feature\PostController;
 
 use App\Models\Post;
 use Tests\TestCase;
