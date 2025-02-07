@@ -13,5 +13,5 @@ Route::middleware('auth:sanctum')->group(static function () {
     Route::put('/user', [UserController::class, 'update']);
 
     Route::get("posts", [PostController::class, 'index']);
-    Route::get("posts/{post}", [PostController::class, 'index']);
+    Route::get("posts/{post}", [PostController::class, 'show']);
 });
