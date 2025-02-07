@@ -43,7 +43,7 @@ now project serve on port 8000 also can see swagger docs in
 if this URL not work run this command to generate swagger docs
 
 ```bash
-php artisan sscribe:generate
+php artisan scribe:generate
 ```
 
 step 6: running tests
