@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Services\AuthService;
+use App\Services\PostService;
 use App\Services\UserService;
 use Illuminate\Support\ServiceProvider;
 
@@ -21,6 +22,9 @@ class AppServiceProvider extends ServiceProvider
             return new UserService;
         });
 
+        $this->app->singleton(PostService::class, function () {
+            return new PostService;
+        });
     }
 
     /**

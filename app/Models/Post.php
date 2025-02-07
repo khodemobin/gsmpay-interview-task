@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use Database\Factories\PostFactory;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model
 {
-    /** @use HasFactory<\Database\Factories\PostFactory> */
+    /** @use HasFactory<PostFactory> */
     use HasFactory;
 
     protected $guard = ['id'];
@@ -19,5 +21,10 @@ class Post extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function scopeUserPosts(Builder $query, int $userId): void
+    {
+        $query->with('user')->where('user_id', $userId);
     }
 }

@@ -22,10 +22,7 @@ class MeTest extends TestCase
 
     public function test_user_me_failed(): void
     {
-        $user = User::factory()->create();
-
         $response = $this->getJson('/api/user');
-
         $response->assertStatus(401);
     }
 }
